@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <iostream>
+#include <cmath>
+#include <algorithm>
 
 //main method
 int main(){
@@ -37,37 +39,53 @@ int main(){
 
     //errors here
     do {
-        for (int i=0; i<maxsize; i++) { 
-        for (int j=0; j<maxsize; j++) { 
-            for (int k=0; k<maxsize; k++) { 
-                for (int l=0; l<maxsize; l++) { 
-                    for (int m=0; m<maxsize; m++) { 
-                        for (int n=0; n<maxsize; n++) { 
+            for (int i=0; i<maxsize; i++) { 
+                for (int j=0; j<maxsize; j++) { 
+                    for (int k=0; k<maxsize; k++) { 
+                        for (int l=0; l<maxsize; l++) { 
+                            for (int m=0; m<maxsize; m++) { 
+                                for (int n=0; n<maxsize; n++) { 
 
-                            if (    ( ( i == l )   && ( j == m )   && ( k == n+1) ) ||  
-                                    ( ( i == l )   && ( j == m )   && ( k == n-1) ) ||  
-                                    ( ( i == l )   && ( j == m+1 ) && ( k == n)   ) ||  
-                                    ( ( i == l )   && ( j == m-1 ) && ( k == n)   ) ||  
-                                    ( ( i == l+1 ) && ( j == m )   && ( k == n)   ) ||  
-                                    ( ( i == l-1 ) && ( j == m )   && ( k == n)   ) ) {
+                                    if (    ( ( i == l )   && ( j == m )   && ( k == n+1) ) ||  
+                                            ( ( i == l )   && ( j == m )   && ( k == n-1) ) ||  
+                                            ( ( i == l )   && ( j == m+1 ) && ( k == n)   ) ||  
+                                            ( ( i == l )   && ( j == m-1 ) && ( k == n)   ) ||  
+                                            ( ( i == l+1 ) && ( j == m )   && ( k == n)   ) ||  
+                                            ( ( i == l-1 ) && ( j == m )   && ( k == n)   ) ) {
 
-                                double change = (cube[i][j][k] - cube[l][m][n]) * DTerm;
-                                cube[i][j][k] = cube[i][j][k] - change;                                
-                                cube[l][m][n] = cube[l][m][n] + change;                                
-                            }          
-                        }
+                                        double change = (cube[i][j][k] - cube[l][m][n]) * DTerm;
+                                        cube[i][j][k] = cube[i][j][k] - change;                                
+                                        cube[l][m][n] = cube[l][m][n] + change;                                
+                                    }          
+                                }
+                            }
+                        }             
                     }
-                }             
+                }
+            }
+
+            time = time + timestep;
+        double sumval = 0.0;
+        double maxval = cube[0][0][0]; 
+        double minval = cube[0][0][0];
+        for (int i=0; i<maxsize; i++) { 
+            for (int j=0; j<maxsize; j++) { 
+                for (int k=0; k<maxsize; k++) { 
+                    maxval = std::max(cube[i][j][k],maxval);
+                    minval = std::min(cube[i][j][k],minval);
+                    sumval += cube[i][j][k];
+                }
             }
         }
-    }
-
-
-
-
-
+        std::cout<<time + " " + cube[0][0][0];
+        std::cout<< " " + cube[maxsize-1][0][0];
+        std::cout<<" " + cube[maxsize-1][maxsize-1][0];
+        std::cout<<" " + cube[maxsize-1][maxsize-1][maxsize-1];
+        std::cout<< " " + sumval + "\n";
 
     }while(ratio < 0.99);
+
+    std::cout<<"Box equilibrated in " + time + " seconds of simulated time.";
     
 
 

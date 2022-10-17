@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <string>
 
+using namespace std;
 //main method
 int main(){
     //final variable for the cube
@@ -65,7 +66,7 @@ int main(){
                 }
             }
 
-            time = time + timestep;
+        time = time + timestep;
         double sumval = 0.0;
         double maxval = cube[0][0][0]; 
         double minval = cube[0][0][0];
@@ -78,16 +79,17 @@ int main(){
                 }
             }
         }
+        ratio = minval/maxval;
         
         std::cout<<time << " " <<cube[0][0][0];
         std::cout<< " " << cube[maxsize-1][0][0];
         std::cout<<" " << cube[maxsize-1][maxsize-1][0];
         std::cout<<" " << cube[maxsize-1][maxsize-1][maxsize-1];
-        std::cout<< " " << sumval << "\n";
+        std::cout<< " " << sumval << endl;
 
     }while(ratio < 0.99);
 
-    std::cout<<"Box equilibrated in " <<time << " seconds of simulated time.";
+    std::cout<<"Box equilibrated in " <<time << " seconds of simulated time." << endl;
     
 
 

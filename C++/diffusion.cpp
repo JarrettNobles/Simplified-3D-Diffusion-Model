@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include <algorithm>
+#include <string>
 
 //main method
 int main(){
@@ -77,15 +78,16 @@ int main(){
                 }
             }
         }
-        std::cout<<time + " " + cube[0][0][0];
-        std::cout<< " " + cube[maxsize-1][0][0];
-        std::cout<<" " + cube[maxsize-1][maxsize-1][0];
-        std::cout<<" " + cube[maxsize-1][maxsize-1][maxsize-1];
-        std::cout<< " " + sumval + "\n";
+        
+        std::cout<<time << " " <<cube[0][0][0];
+        std::cout<< " " << cube[maxsize-1][0][0];
+        std::cout<<" " << cube[maxsize-1][maxsize-1][0];
+        std::cout<<" " << cube[maxsize-1][maxsize-1][maxsize-1];
+        std::cout<< " " << sumval << "\n";
 
     }while(ratio < 0.99);
 
-    std::cout<<"Box equilibrated in " + time + " seconds of simulated time.";
+    std::cout<<"Box equilibrated in " <<time << " seconds of simulated time.";
     
 
 

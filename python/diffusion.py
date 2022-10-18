@@ -8,7 +8,13 @@ import numpy
 #main function
 def main():
     #needs to be a constant integer
-    final int maxsize = 10;
+    #final int maxsize = 10
+    maxsize = 10;
     #declare the array
+    numpy.cube[maxsize][maxsize][maxsize]
+
+    #zero the cube
+    for i=0;i<maxsize; i++
+    
 
     

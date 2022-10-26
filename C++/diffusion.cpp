@@ -39,7 +39,7 @@ int main(){
     double time = 0.0;
     double ratio = 0.0;
 
-    //errors here
+    
     do {
             for (int i=0; i<maxsize; i++) { 
                 for (int j=0; j<maxsize; j++) { 

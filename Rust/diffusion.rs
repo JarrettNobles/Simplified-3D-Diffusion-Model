@@ -2,7 +2,7 @@ fn main(){
     println!("test print");
     const maxsize: usize = 10;
     //3d array????
-    let mut cube:[[[f64;maxsize];maxsize];maxsize = [[[0.0;maxsize];maxsize];maxsize];
+    let mut cube:[[[f64;maxsize];maxsize];maxsize = [[[0.0;maxsize];maxsize];maxsize]];
     //zero the cube
     for i in 0..maxsize{
         for j in 0..maxsize{

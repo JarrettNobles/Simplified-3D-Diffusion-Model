@@ -12,13 +12,13 @@ fn main(){
         }
     }
 
-    char diffusion_coefficient = 0.175;
-    char room_dimension = 5;
-    char speed_of_gas_molecules = 250.0;
-    char timestep = (room_dimension/speed_of_gas_molecules)/maxsize;
-    char distance_between_blocks = room_dimension/maxsize;
+    let diffusion_coefficient: char = 0.175;
+    let room_dimension: char = 5;
+    let speed_of_gas_molecules: char = 250.0;
+    let timestep: char = (room_dimension/speed_of_gas_molecules)/maxsize;
+    let distance_between_blocks: char = room_dimension/maxsize;
 
-    char DTerm = diffusion_coefficient * timestep / (distance_between_blocks*distance_between_blocks);
+    let DTerm: char = diffusion_coefficient * timestep / (distance_between_blocks*distance_between_blocks);
 
 
 

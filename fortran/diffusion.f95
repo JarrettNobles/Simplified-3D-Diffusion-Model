@@ -17,10 +17,30 @@ SUBROUTINE fill_Cube
   cube(0,0,0) = 1.0e21
 
   do while(ratio <= 0.99)
-    do i = 1, maxsize
-      do j = 1, maxsize
-        do k = 1, maxsize
-          
+    do i = 1, maxsize-1
+      do j = 1, maxsize-1
+        do k = 1, maxsize-1
+         do l = 1, maxsize-1
+          do m = 1, maxsize-1
+            do n = 1, maxsize-1
+              if (    ( ( i == l )   && ( j == m )   && ( k == n+1) ) ||  
+                                    ( ( i == l )   && ( j == m )   && ( k == n-1) ) ||  
+                                    ( ( i == l )   && ( j == m+1 ) && ( k == n)   ) ||  
+                                    ( ( i == l )   && ( j == m-1 ) && ( k == n)   ) ||  
+                                    ( ( i == l+1 ) && ( j == m )   && ( k == n)   ) ||  
+                                    ( ( i == l-1 ) && ( j == m )   && ( k == n)   ) )
+                THEN change = (cube[i][j][k] - cube[l][m][n]) * DTerm
+                                cube[i][j][k] = cube[i][j][k] - change                                
+                                cube[l][m][n] = cube[l][m][n] + change
+
+  time = time+timestep
+  sumval = 0
+  maxval = cube(0,0,0)
+  minval = cube(0,0,0)
+  
+
+
+
 
   
   

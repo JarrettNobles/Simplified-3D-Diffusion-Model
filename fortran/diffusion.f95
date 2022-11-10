@@ -1,7 +1,7 @@
 !Jarrett Nobles, CSC330
 program diffusion
 
-SUBROUTINE fill_Cube
+
    maxsize = 10.0
   !USE cube_mem
   !partition integer here
@@ -29,15 +29,39 @@ SUBROUTINE fill_Cube
                                     ( ( i == l )   && ( j == m-1 ) && ( k == n)   ) ||  
                                     ( ( i == l+1 ) && ( j == m )   && ( k == n)   ) ||  
                                     ( ( i == l-1 ) && ( j == m )   && ( k == n)   ) )
-                THEN change = (cube[i][j][k] - cube[l][m][n]) * DTerm
-                                cube[i][j][k] = cube[i][j][k] - change                                
-                                cube[l][m][n] = cube[l][m][n] + change
+                THEN change = (cube(i)(j)(k) - cube(l)(m)(n)) * DTerm
+                                cube(i)(j)(k) = cube(i)(j)(k) - change                                
+                                cube(l)(m)(n) = cube(l)(m)(n) + change
+              end if
+            end do
+          end do
+        end do
+      end do
+    end do
 
   time = time+timestep
   sumval = 0
   maxval = cube(0,0,0)
   minval = cube(0,0,0)
-  
+  do i = 1, maxsize
+    do j = 1, maxsize
+      do k = 1, maxsize
+        maxval = DMAX1(cube(0,0,0), maxval)
+        minval = DMIN1(cube(0,0,0)minval)
+        sumval += cube(i,j,k)
+      end do
+    end do
+  end do
+
+  ratio = minval/maxval
+  print*,  'time + " " + cube(0,0,0)'
+  print*, '        " " + cube(maxsize-1,0,0)'
+  print*, '        " " + cube(maxsize-1,maxsize-1,0)' 
+  print*, '       " " + cube(maxsize-1,maxsize-1,maxsize-1)'
+  end do
+print*, '"Box equilibrated in " + time + " seconds of simulated time." '
+
+
 
 
 

@@ -17,22 +17,23 @@ timestep = (room_dimension / speed_of_gas_molecules) / maxsize
 DTerm = diffusion_coefficient * timestep / (distance_between_blocks*distance_between_blocks)
 cube(0,0,0) = 1.0e21
 
+!REFERENCE: https://www.tutorialspoint.com/fortran/nested_if_construct.htm
 DO while(ratio <= 0.99)
-  DO i = 1, maxsize-1
-    DO j = 1, maxsize-1
-      DO k = 1, maxsize-1
-        DO l = 1, maxsize-1
-          DO m = 1, maxsize-1
-            DO n = 1, maxsize-1
-              IF (    ( ( i == l )   && ( j == m )   && ( k == n+1) ) ||  
-                                    ( ( i == l )   && ( j == m )   && ( k == n-1) ) ||  
-                                    ( ( i == l )   && ( j == m+1 ) && ( k == n)   ) ||  
-                                    ( ( i == l )   && ( j == m-1 ) && ( k == n)   ) ||  
-                                    ( ( i == l+1 ) && ( j == m )   && ( k == n)   ) ||  
-                                    ( ( i == l-1 ) && ( j == m )   && ( k == n)   ) )
-                THEN change = (cube(i)(j)(k) - cube(l)(m)(n)) * DTerm
-                                cube(i)(j)(k) = cube(i)(j)(k) - change                                
-                                cube(l)(m)(n) = cube(l)(m)(n) + change
+  DO i = 0, maxsize-1
+    DO j = 0, maxsize-1
+      DO k = 0, maxsize-1
+        DO l = 0, maxsize-1
+          DO m = 0, maxsize-1
+            DO n = 0, maxsize-1
+              IF ( (  i == l    .and.  j == m    .and.  k == (n+1) ) .or. &
+                   ( i == l    .and.  j == m    .and.  k == (n-1) ) .or. &
+                   ( i == l    .and.  j == (m+1) .and.  k == n ) .or. & 
+                   (  i == l    .and.  j == (m-1 ) .and.  k == n   ) .or. &  
+                   (  i == (l+1) .and.  j == m    .and.  k == n   ) .or. &  
+                   (  i == (l-1) .and.  j == m    .and.  k == n   )
+                    THEN change = ( cube(i,j,k) - cube(l,,m,n) ) * DTerm
+                                cube(i,j,k) = cube(i,j,k) - change                                
+                                cube(l,m,n) = cube(l,m,n) + change
               !END IF
             END DO
           END DO

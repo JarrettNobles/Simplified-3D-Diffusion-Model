@@ -4,13 +4,13 @@ fn main(){
     //3d array????
     // obtained from https://docs.rs/multiarray/latest/multiarray/ and https://programming-idioms.org/idiom/27/create-a-3-dimensional-array/452/rust
     // mut variables from https://doc.rust-lang.org/std/keyword.mut.html
-    let mut cube:[[[f64;maxsize];maxsize];maxsize = [[[0.0;maxsize];maxsize];maxsize]];
+    let mut cube:[[[f64;maxsize];maxsize];maxsize] = [[[0.0;maxsize];maxsize];maxsize];
     let diffusion_coefficient: char = 0.175;
     let room_dimension: char = 5;
     let speed_of_gas_molecules: char = 250.0;
     let timestep: char = (room_dimension/speed_of_gas_molecules)/maxsize;
     let distance_between_blocks: char = room_dimension/maxsize;
-    let DTerm: char = diffusion_coefficient * timestep / (distance_between_blocks*distance_between_blocks);
+    let DTerm: char = diffusion_coefficient * timestep / (distance_between_blocks * distance_between_blocks);
     cube[0][0][0] = 1.0e21;
     let pass = 0;
     let mut time = 0.0;
@@ -29,10 +29,11 @@ fn main(){
                      i == l && j == (m+1) && k == n ||
                      i == l && j == (m-1) && k == n ||
                      i == (l+1) && j == m && k == n ||
-                     i == (l-1) && j == m && k == n ||
+                     i == (l-1) && j == m && k == n ||{
                        let change = (cube[i][j][k] - cube[l][m][n]) as f64 * DTerm;
                        cube[i][j][k] = cube[i][j][k] - change;
-                       cube[i][j][k] = cube[i][j][k] + change;
+                       cube[i][j][k] = cube[i][j][k] + change;}
+                  
                 }
               }
             }
@@ -44,6 +45,7 @@ fn main(){
     //mut variables from https://doc.rust-lang.org/std/keyword.mut.html
     let mut sumval = 0.0;
     let mut maxval = cube[0][0][0];
+    let mut minval = cube[0][0][0];
     
     //begin loop
     //.max information obtained from https://doc.rust-lang.org/std/cmp/fn.max.html
@@ -56,19 +58,19 @@ fn main(){
         }
       }
     }
+  
     //print the numbers here
     ratio = minval/maxval;
+    println!("{} time = {}" ,ratio,time);
+    println!("{} {}", time,cube[0][0][0]);
+    println!(" {}", cube[maxsize-1][0][0]);
+    println!(" {}", cube[maxsize][maxsize-1][0]);
+    println!(" {}", cube[maxsize-1][maxsize-1][maxsize-1]);
+    println!(" {}",sumval);
+  
   }
   //end giant loop
   //print time info here
-   
-    
-    
-    
-    
-    
-
-
-  
+  println!("Box equilibrated in {} seconds of simulation time. ", time);
+ 
 }
-//end of main

@@ -5,9 +5,9 @@ fn main(){
     // obtained from https://docs.rs/multiarray/latest/multiarray/ and https://programming-idioms.org/idiom/27/create-a-3-dimensional-array/452/rust
     // mut variables from https://doc.rust-lang.org/std/keyword.mut.html
     let mut cube:[[[f64;maxsize];maxsize];maxsize] = [[[0.0;maxsize];maxsize];maxsize];
-    let diffusion_coefficient: char = 0.175;
-    let room_dimension: char = 5;
-    let speed_of_gas_molecules: char = 250.0;
+    let diffusion_coefficient: f64 = 0.175;
+    let room_dimension: f64 = 5.0;
+    let speed_of_gas_molecules: f64 = 250.0;
     let timestep: char = (room_dimension/speed_of_gas_molecules)/maxsize;
     let distance_between_blocks: char = room_dimension/maxsize;
     let DTerm: char = diffusion_coefficient * timestep / (distance_between_blocks * distance_between_blocks);

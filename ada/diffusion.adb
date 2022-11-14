@@ -22,7 +22,7 @@ procedure diffusion is
   begin :
     -- initialize the first cell
     cube(1,1,1) := 1.0e21;
-    
+    --begin loop
     while ratio < 0.99 loop
       for i in 1.. dim loop
         for j in 1.. dim loop
@@ -35,7 +35,23 @@ procedure diffusion is
                        (i = l and j = (m+1) and k = n) or
                        (i = l and j = (m-1) and k = n) or
                        (i = (l+1) and j = m and k = n) or
-                       (i = (l-1) and j = m and k = n) or
+                       (i = (l-1) and j = m and k = n) then
+                         change := (cube(i,j,k) - cube(l,m,n)) * DTerm;
+                          cube(i,j,k) := cube(i,j,k) - change;
+                          cube(l,m,n) := cube(l,m,n) + change;
+                    end if;
+                end loop;
+              end loop;
+            end loop;
+          end loop;
+        end loop;
+      end loop;
+      --end of giant loop here
+    time := time + timestep;
+    maxval := cube(1,1,1);
+    minval := cube(1,1,1);
+    
+    
                        
 
       

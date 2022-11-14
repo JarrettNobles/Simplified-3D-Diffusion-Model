@@ -47,10 +47,24 @@ procedure diffusion is
         end loop;
       end loop;
       --end of giant loop here
-    time := time + timestep;
-    maxval := cube(1,1,1);
-    minval := cube(1,1,1);
-    
+  time := time + timestep;
+  maxval := cube(1,1,1);
+  minval := cube(1,1,1);
+  for i in 1.. dim loop
+    for j in 1.. dim loop
+      for k in 1.. dim loop
+         maxval := float'Max(cube(i,j,k), maxval);
+         minval := float'Min(cube(i,j,k), minval);
+         sumval := sumval + cube(i,j,k);
+      end loop;
+    end loop;
+  end loop;
+  ratio := minval/maxval;
+  put(ratio);
+  end loop;
+  end;
+end diffusion;
+       
     
                        
 

@@ -1,0 +1,112 @@
+V "GNAT Lib v4.8"
+M P W=b
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_IMPLICIT_LOOPS
+RV SPARK
+
+U diffusion%b		diffusion.adb		62f29cc8 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.latin_1%s  a-chlat1.ads	a-chlat1.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.long_float_text_io%s  a-lfteio.ads	a-lfteio.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system.img_real%s	s-imgrea.adb		s-imgrea.ali
+
+D ada.ads		20121213103024 3ffc8e18
+D a-charac.ads		20121213103029 2d3ec45b
+D a-chlat1.ads		20121213103024 2825df20
+D a-comlin.ads		20121213103024 e0accaa5
+D a-except.ads		20121213103024 10fcae55
+D a-finali.ads		20121213103024 52ecdc1b
+D a-flteio.ads		20121213103024 e18a47a0
+D a-inteio.ads		20121213103029 f64b89a4
+D a-ioexce.ads		20121213103029 8b9de6cd
+D a-lfteio.ads		20121213103024 4969a46f
+D a-stream.ads		20121213103024 2ca4ee37
+D a-tags.ads		20121213103024 6c0509d0
+D a-textio.ads		20130106093217 386df5d4
+D a-tiflio.ads		20121213103024 56fbda09
+D a-tiinio.ads		20121213103024 aa04e5d6
+D a-unccon.ads		20121213103024 f9eb8f06
+D diffusion.adb		20221116195746 f4d3e326
+D interfac.ads		20121213103024 129923ea
+D i-cstrea.ads		20130106093208 3286f6aa
+D system.ads		20121213103024 90249111
+D s-crtl.ads		20130106093200 1ea48bce
+D s-exctab.ads		20121213103029 66e51330
+D s-ficobl.ads		20121213103029 55a71d43
+D s-finmas.ads		20121213103024 b95bb341
+D s-finroo.ads		20121213103024 4ff27390
+D s-imgrea.ads		20121213103024 c7a851e2
+D s-parame.ads		20121213103024 b6e20cc0
+D s-pooglo.ads		20121213103024 542f33d0
+D s-soflin.ads		20121213103024 24c8153c
+D s-stache.ads		20121213103024 596fc1b4
+D s-stalib.ads		20130106093355 f78bcf95
+D s-stoele.ads		20121213103024 facd7d98
+D s-stoele.adb		20121213103024 afc5dc80
+D s-stopoo.ads		20121213103024 7b8fbeee
+D s-traent.ads		20121213103024 5221ee41
+D s-unstyp.ads		20121213103024 6ae15c76
+D s-wchcon.ads		20121213103024 bfeb2e3d
+X 1 ada.ads
+16K9*Ada 19e8 17|1r6 1r19 1r40 2r5 2r18 2r39 3r6 3r18 3r36 3r53 4r5 4r17
+. 4r35 4r52
+X 2 a-charac.ads
+16K13*Characters 18e19 17|3r57 4r56
+X 3 a-chlat1.ads
+20K24*Latin_1 298e27 17|3w68 4r67
+X 4 a-comlin.ads
+38K13*Command_Line 139e21 17|3w40 4r39
+X 7 a-flteio.ads
+20K13*Float_Text_IO[14|45] 17|3w22 4r21
+X 8 a-inteio.ads
+18K13*Integer_Text_IO[15|45] 17|1w23 2r22
+X 10 a-lfteio.ads
+18K13*Long_Float_Text_IO[14|45] 17|1w44 2r43
+X 13 a-textio.ads
+49K13*Text_IO 471e16 17|1w10 2r9 3w10 4r9
+166U14*New_Line 17|70s17
+242U14*Put 17|68s17 73s13 74s13 75s13
+X 14 a-tiflio.ads
+67U14*Put 17|67s17[10|18] 69s17[10|18]
+X 17 diffusion.adb
+6U11*diffusion 6b11 76l5 76t14
+7A10 Three_Dimensional_Float_Array(long_float)<integer><integer><integer>
+. 21r20
+8i5 dim{integer} 12r73 13r85 21r54 21r63 21r72 31r34 32r38 33r42 34r46 35r46
+. 36r50 57r30 58r34 59r38
+9f5 room_dimension{long_float} 12r45 13r31
+10f5 diffusion_coefficent{long_float} 14r27
+11f5 speed_of_gas_molecules{long_float} 13r48
+12f5 distance_between_blocks{long_float} 14r73 14r97
+13f5 timestep{long_float} 14r50 54r32
+14f5 DTerm{long_float} 43r85
+15f5 time{long_float} 54m17 54r25 69r21 74r34
+16f5 ratio{long_float} 30r23 66m17 67r21
+21a13 cube{7A10} 28m17 43r56 43r70 44m45 44r60 45m45 45r60 55r27 56r27 60r54
+. 61r54 62r48
+22f13 sumval{long_float} 62m29 62r39
+23f13 maxval{long_float} 55m17 60m29 60r67 66r33
+24f13 minval{long_float} 56m17 61m29 61r67 66r26
+25f13 change{long_float} 43m45 44r74 45r74
+31i25 i{integer} 37r45 38r42 39r42 40r42 41r42 42r42 43r61 44r50 44r65
+32i29 j{integer} 37r55 38r52 39r52 40r52 41r56 42r56 43r63 44r52 44r67
+33i33 k{integer} 37r65 38r62 39r66 40r66 41r66 42r66 43r65 44r54 44r69
+34i37 l{integer} 37r49 38r46 39r46 40r46 41r47 42r47 43r75 45r50 45r65
+35i37 m{integer} 37r59 38r56 39r57 40r57 41r60 42r60 43r77 45r52 45r67
+36i41 n{integer} 37r70 38r67 39r70 40r70 41r70 42r70 43r79 45r54 45r69
+57i21 i{integer} 60r59 61r59 62r53
+58i25 j{integer} 60r61 61r61 62r55
+59i29 k{integer} 60r63 61r63 62r57
+

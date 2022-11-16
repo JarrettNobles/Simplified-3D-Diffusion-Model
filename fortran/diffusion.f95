@@ -1,11 +1,12 @@
 !Jarrett Nobles, CSC330
 PROGRAM diffusion
-
+implict none
 !partition integer here
 !integers for the for loops for cubes
-!INTEGER  :: i, j, k, l, m, n
+INTEGER  :: i, j, k, l, m, n
 REAL :: diffusion_coefficient, room_dimension, speed_of_gas_molecules, timestep, distance_between_blocks, DTerm
 REAL :: time, ratio, change, sumval, maxsize, minval
+!  Declaration of cube
 cube = 0
 maxsize = 10.0
 diffusion_coefficient = 0.175
@@ -30,7 +31,7 @@ DO while(ratio <= 0.99)
                    ( i == l .and. j == (m-1 ) .and. k == n) .or. &  
                    ( i == (l+1) .and. j == m .and. k == n) .or. &  
                    ( i == (l-1) .and. j == m  .and.  k == n))THEN
-                      change = ( cube(i,j,k) - cube(l,m,n) ) * DTerm
+                      change =  (cube(i,j,k) - cube(l,m,n)) * DTerm
                                 cube(i,j,k) = cube(i,j,k) - change                                
                                 cube(l,m,n) = cube(l,m,n) + change
               END IF

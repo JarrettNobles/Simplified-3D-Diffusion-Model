@@ -1,7 +1,7 @@
 const MAXSIZE : usize = 10;
 
 fn main(){
-    use std::cmp;
+    //use std::cmp;
     // obtained from https://docs.rs/multiarray/latest/multiarray/ and https://programming-idioms.org/idiom/27/create-a-3-dimensional-array/452/rust
     // mut variables from https://doc.rust-lang.org/std/keyword.mut.html
     let mut cube:[[[f64;MAXSIZE];MAXSIZE];MAXSIZE] = [[[0.0;MAXSIZE];MAXSIZE];MAXSIZE];
@@ -33,7 +33,7 @@ fn main(){
                                    i == (l-1) && j == m && k == n {
                                     let change = (cube[i as usize][j as usize][k as usize] - cube[l as usize][m as usize][n as usize]) as f64 * dterm;
                                     cube[i as usize][j as usize][k as usize] = cube[i as usize][j as usize][k as usize] - change;
-                                    cube[i as usize][j as usize][k as usize] = cube[i as usize][j as usize][k as usize] + change;
+                                    cube[l as usize][m as usize][n as usize] = cube[l as usize][m as usize][n as usize] + change;
                                 }
                             }
                         }
@@ -49,18 +49,18 @@ fn main(){
         let mut minval = cube[1][1][1];
 
         //.max information obtained from https://doc.rust-lang.org/std/cmp/fn.max.html
-        for i in 1..MAXSIZE as i64{
-            for j in 1..MAXSIZE as i64{
-                for k in 1..MAXSIZE as i64{
+        for i in 1..MAXSIZE{
+            for j in 1..MAXSIZE{
+                for k in 1..MAXSIZE{
                     //maxval = maxval.max(cube[i as usize][j as usize][k as usize]);
-                    maxval = maxval.max(cube[i as usize][j as usize][k as usize]);
-                    minval = minval.min(cube[i as usize][j as usize][k as usize]);
-                    sumval = sumval + cube[i as usize][j as usize][k as usize];
+                    maxval = (cube[i][j][k]).max(maxval);
+                    minval = (cube[i][j][k]).min(minval);
+                    sumval = sumval + cube[i][j][k];
                 }
                 
             }
         }//end for
-        dbg!(sumval,maxval,minval);
+        //dbg!(sumval,maxval,minval);
 
         //print statements
         ratio = minval / maxval;

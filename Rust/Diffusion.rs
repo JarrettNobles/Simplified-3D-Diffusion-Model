@@ -10,7 +10,7 @@ fn main(){
     let distance_between_blocks: f64 = room_dimension/MAXSIZE as f64;
     let dterm: f64 = diffusion_coefficient * timestep / (distance_between_blocks * distance_between_blocks);
     cube[0][0][0] = 1.0e21;
-    //let mut pass = 0;
+    
     let mut time = 0.0;
     let mut ratio = 0.0;
 
@@ -50,8 +50,8 @@ fn main(){
         for i in 0..MAXSIZE as i64{
             for j in 0..MAXSIZE as i64{
                 for k in 0..MAXSIZE as i64{
-                    maxval = cube[i as usize][j as usize][k as usize].max(maxval);
-                    minval = cube[i as usize][j as usize][k as usize].max(minval);
+                    maxval = maxval.max(cube[i as usize][j as usize][k as usize]);
+                    minval = maxval.max(cube[i as usize][j as usize][k as usize]);
                     sumval = sumval + cube[i as usize][j as usize][k as usize];
                 }
             }
@@ -59,12 +59,7 @@ fn main(){
 
         //print statements
         ratio = minval / maxval;
-        //println!("{} time = {}" ,ratio,time);
-        //println!("{} {}", time,cube[0][0][0]);
-        //println!(" {}", cube[MAXSIZE-1][0][0]);
-        //println!(" {}", cube[MAXSIZE-1][MAXSIZE-1][0]);
-        //println!(" {}", cube[MAXSIZE-1][MAXSIZE-1][MAXSIZE-1]);
-        //println!(" {}",sumval);
+        
         println!("{:.3} \x09 {:.5e} \x09 {:.5e} \x09 {:.5e} \x09 {:.5e} \x09 {:.5e}",
             time,
             cube[0][0][0],

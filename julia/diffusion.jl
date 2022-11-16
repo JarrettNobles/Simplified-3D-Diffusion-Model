@@ -36,11 +36,12 @@ if (part == 1)
 end
 
 #declare the variables
+ratio = 0.0
 speed_of_gas_molecules = 250.0
 diffusion_coefficient = 0.175
 room_dimension = 5
-timestep = (room_dimension /speed_of_gas_molecules) / dimension
-distance_between_blocks = room_dimension / dimension
+timestep = (room_dimension /speed_of_gas_molecules) / dim
+distance_between_blocks = room_dimension / dim
 dterm = diffusion_coefficient * timestep / (distance_between_blocks * distance_between_blocks)
 
 #zero the cube

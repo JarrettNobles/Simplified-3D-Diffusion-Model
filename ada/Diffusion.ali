@@ -7,9 +7,10 @@ RV NO_DIRECT_BOOLEAN_OPERATORS
 RV NO_FLOATING_POINT
 RV NO_IO
 RV NO_IMPLICIT_CONDITIONALS
+RV NO_IMPLICIT_LOOPS
 RV SPARK
 
-U diffusion%b		Diffusion.adb		720fcf75 NE OO SU
+U diffusion%b		Diffusion.adb		5fdb3c55 NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.characters%s	a-charac.ads		a-charac.ali
 W ada.characters.latin_1%s  a-chlat1.ads	a-chlat1.ali
@@ -35,7 +36,7 @@ D a-textio.ads		20130106093217 386df5d4
 D a-tiflio.ads		20121213103024 56fbda09
 D a-tiinio.ads		20121213103024 aa04e5d6
 D a-unccon.ads		20121213103024 f9eb8f06
-D Diffusion.adb		20221116010256 4ccd5354
+D Diffusion.adb		20221116132353 6119a074
 D interfac.ads		20121213103024 129923ea
 D i-cstrea.ads		20130106093208 3286f6aa
 D system.ads		20121213103024 90249111
@@ -71,12 +72,12 @@ X 8 a-inteio.ads
 18K13*Integer_Text_IO[14|45] 16|1w23 2r22
 X 12 a-textio.ads
 49K13*Text_IO 471e16 16|1w10 2r9 3w10 4r9
-166U14*New_Line 16|69s17
-242U14*Put 16|72s13 73s13
+166U14*New_Line 16|71s17
+242U14*Put 16|69s17 74s13 75s13 76s13
 X 13 a-tiflio.ads
-67U14*Put 16|68s17[7|20]
+67U14*Put 16|68s17[7|20] 70s17[7|20]
 X 16 Diffusion.adb
-6U11*Diffusion 6b11 74l5 74t14
+6U11*Diffusion 6b11 77l5 77t14
 7A10 Three_Dimensional_Float_Array(float)<integer><integer><integer> 22r20
 8i5 dim{integer} 22r54 22r63 22r72 32r30 33r34 34r38 35r42 36r42 37r46 58r30
 . 59r34 60r34
@@ -87,7 +88,7 @@ X 16 Diffusion.adb
 13f5 timestep{float} 14r45 55r32
 14f5 DTerm{float} 44r81
 15i5 pass{integer}
-16f5 time{float} 55m17 55r25 73r29
+16f5 time{float} 55m17 55r25 70r21 75r29
 17f5 ratio{float} 31r23 67m17 68r21
 22a13 cube{7A10} 29m17 44r52 44r66 45m41 45r56 46m41 46r56 56r27 57r27 61r45
 . 62r45 63r44

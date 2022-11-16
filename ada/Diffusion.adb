@@ -5,7 +5,7 @@ use Ada.Text_IO,Ada.Float_Text_Io,Ada.Command_Line,Ada.Characters.Latin_1;
 
 procedure Diffusion is
     type Three_Dimensional_Float_Array is array (Integer range <>, Integer range <>, Integer range <>) of Float;
-    dim : Integer := 5;
+    dim : Integer := 10;
     room_dimension : float := 5.0;
     diffusion_coefficent : float := 5.0;
     speed_of_gas_molecules : float := 250.0;
@@ -66,10 +66,13 @@ procedure Diffusion is
                 end loop;
                 ratio := minval/maxval;
                 put(ratio);
+                put("    ");
+                put(time);
                 New_Line;
                 end loop;
             end;
-            put("Box equilibrated in seconds of simulation time.");
+            put("Box equilibrated in ");
             put(float'image(time));
+            put("seconds of simulation time.");
 end diffusion;
 

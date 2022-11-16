@@ -1,5 +1,15 @@
 import time
-maxsize = 10
+import math
+import sys
+# get size of the cube
+maxsize = int(input("what is the size of the cube: "))
+
+#ask user for partition
+partition = int(input("Is there a partition? (type 0 for no, type 1 for yes)"))
+if partition != 1 and partition != 0:
+    print ("Partition set at 0")
+
+partsize = math.floor(maxsize / 2)
 cube = [[[0.0] * maxsize] * maxsize] * maxsize
 cube[0][0][0] = 1.0e21
 diffusion_coefficient = 0.175
@@ -11,6 +21,12 @@ DTerm = diffusion_coefficient * timestep / (distance_between_blocks * distance_b
 time1 = 0.0
 ratio = 0.0
 start = time.time()
+if partition == 1:
+      for i in range(0, maxsize):
+            for j in range(0, maxsize):
+                  for k in range(0, maxsize):
+                        if (i == partsize-1) and (j >= partsize-1): 
+                              cube[i][j][k] = -1.0
 
 
 # main function

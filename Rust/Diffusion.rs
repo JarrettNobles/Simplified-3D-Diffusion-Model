@@ -1,5 +1,7 @@
 const MAXSIZE : usize = 10;
+
 fn main(){
+    use std::cmp;
     // obtained from https://docs.rs/multiarray/latest/multiarray/ and https://programming-idioms.org/idiom/27/create-a-3-dimensional-array/452/rust
     // mut variables from https://doc.rust-lang.org/std/keyword.mut.html
     let mut cube:[[[f64;MAXSIZE];MAXSIZE];MAXSIZE] = [[[0.0;MAXSIZE];MAXSIZE];MAXSIZE];
@@ -9,19 +11,19 @@ fn main(){
     let timestep: f64 = (room_dimension/speed_of_gas_molecules)as f64 /MAXSIZE as f64;
     let distance_between_blocks: f64 = room_dimension/MAXSIZE as f64;
     let dterm: f64 = diffusion_coefficient * timestep / (distance_between_blocks * distance_between_blocks);
-    cube[0][0][0] = 1.0e21;
+    cube[1][1][1] = 1.0e21;
     
     let mut time = 0.0;
     let mut ratio = 0.0;
 
     //begin loop here
     while ratio < 0.99 {
-        for i in 0..MAXSIZE as i64{
-            for j in 0..MAXSIZE as i64{
-                for k in 0..MAXSIZE as i64{
-                    for l in 0..MAXSIZE as i64{
-                        for m in 0..MAXSIZE as i64{
-                            for n in 0..MAXSIZE as i64{
+        for i in 1..MAXSIZE as i64{
+            for j in 1..MAXSIZE as i64{
+                for k in 1..MAXSIZE as i64{
+                    for l in 1..MAXSIZE as i64{
+                        for m in 1..MAXSIZE as i64{
+                            for n in 1..MAXSIZE as i64{
                                 //begin if statement
                                 if i == l && j == m && k == (n+1) ||
                                    i == l && j == m && k == (n-1) ||
@@ -43,28 +45,31 @@ fn main(){
         time = time + timestep;
         //mut variables from https://doc.rust-lang.org/std/keyword.mut.html
         let mut sumval = 0.0;
-        let mut maxval = cube[0][0][0];
-        let mut minval = cube[0][0][0];
+        let mut maxval = cube[1][1][1];
+        let mut minval = cube[1][1][1];
 
         //.max information obtained from https://doc.rust-lang.org/std/cmp/fn.max.html
-        for i in 0..MAXSIZE as i64{
-            for j in 0..MAXSIZE as i64{
-                for k in 0..MAXSIZE as i64{
+        for i in 1..MAXSIZE as i64{
+            for j in 1..MAXSIZE as i64{
+                for k in 1..MAXSIZE as i64{
+                    //maxval = maxval.max(cube[i as usize][j as usize][k as usize]);
                     maxval = maxval.max(cube[i as usize][j as usize][k as usize]);
-                    minval = maxval.max(cube[i as usize][j as usize][k as usize]);
+                    minval = minval.min(cube[i as usize][j as usize][k as usize]);
                     sumval = sumval + cube[i as usize][j as usize][k as usize];
                 }
+                
             }
         }//end for
+        dbg!(sumval,maxval,minval);
 
         //print statements
         ratio = minval / maxval;
         
         println!("{:.3} \x09 {:.5e} \x09 {:.5e} \x09 {:.5e} \x09 {:.5e} \x09 {:.5e}",
             time,
-            cube[0][0][0],
-            cube[MAXSIZE-1][0][0],
-            cube[MAXSIZE-1][MAXSIZE-1][0],
+            cube[1][1][1],
+            cube[MAXSIZE-1][1][1],
+            cube[MAXSIZE-1][MAXSIZE-1][1],
             cube[MAXSIZE-1][MAXSIZE-1][MAXSIZE-1], sumval);
     
     }//end while loop

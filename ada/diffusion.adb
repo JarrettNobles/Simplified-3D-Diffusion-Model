@@ -7,8 +7,6 @@ procedure diffusion is
     type Three_Dimensional_Float_Array is array (Integer range <>, Integer range <>, Integer range <>) of Long_Float;
     dim : Integer;
     flag : Character;
-    tempa : Integer;
-    --tempb : Integer;
 
     
     
@@ -38,15 +36,15 @@ procedure diffusion is
             maxval : Long_Float := 0.0;
             minval : Long_Float := 0.0;
             change : Long_Float := 0.0;
-            tempb : Integer := Integer(Long_Float'Ceiling(Long_Float(dim) * 0.25) - 1.0);
-            
+            i : Integer := 0;
+            height : Integer := 0;
             begin
             if flag = 'y' then
-              tempa := Integer(Long_Float'Ceiling(Long_Float(dim) * 0.5) - 1.0);
-              
-                for zerob in tempb..dim - 1 loop
-                  for zeroc in 0..dim - 1 loop
-                    cube(tempa,zerob,zeroc) := -1.0;
+              i := Integer(Long_Float'Ceiling(Long_Float(dim) * 0.5));
+              height := Integer(Long_Float'Ceiling(Long_Float(dim) * 0.25));
+                for j in height..dim loop
+                  for k in 1..dim loop
+                    cube(i,j,k) := -1.0;
                   end loop;
                 end loop;
               end if;
@@ -54,18 +52,19 @@ procedure diffusion is
                 cube(1,1,1) := 1.0e21;
                 --begin loop
                 while ratio < 0.99 loop
-                    for i in 1.. dim loop
-                        for j in 1.. dim loop
-                            for k in 1.. dim loop
-                                for l in 1.. dim loop
-                                for m in 1.. dim loop
-                                    for n in 1.. dim loop
-                                        if (i = l and j = m and k = (n+1)) or
+                    for i in 1..dim loop
+                        for j in 1..dim loop
+                            for k in 1..dim loop
+                                for l in 1..dim loop
+                                for m in 1..dim loop
+                                    for n in 1..dim loop
+                                        if ((i = l and j = m and k = (n+1)) or
                                         (i = l and j = m and k = (n-1)) or
                                         (i = l and j = (m+1) and k = n) or
                                         (i = l and j = (m-1) and k = n) or
                                         (i = (l+1) and j = m and k = n) or
-                                        (i = (l-1) and j = m and k = n) then
+                                        (i = (l-1) and j = m and k = n)) and
+                                        (cube(i, j, k) /= -1.0 and cube(l, m, n) /= -1.0) then
                                             change := (cube(i,j,k) - cube(l,m,n)) * DTerm;
                                             cube(i,j,k) := cube(i,j,k) - change;
                                             cube(l,m,n) := cube(l,m,n) + change;
@@ -83,14 +82,16 @@ procedure diffusion is
                 for i in 1.. dim loop
                     for j in 1.. dim loop
                         for k in 1.. dim loop
-                            maxval := Long_Float'Max(cube(i,j,k), maxval);
-                            minval := Long_Float'Min(cube(i,j,k), minval);
-                            sumval := sumval + cube(i,j,k);
+                            if(cube(i, j, k) /= -1.0) then
+                                maxval := Long_Float'max(cube(i,j,k), maxval);
+                                minval := Long_Float'min(cube(i,j,k), minval);
+                                sumval := sumval + cube(i,j,k);
+                            end if;
                         end loop;
                     end loop;
                 end loop;
                 ratio := minval/maxval;
-                put(ratio,0,9,0);
+                put(ratio,0,10);
                 put("    ");
                 put(time,0,5,0);
                 New_Line;

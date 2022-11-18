@@ -10,7 +10,7 @@ RV NO_IMPLICIT_CONDITIONALS
 RV NO_IMPLICIT_LOOPS
 RV SPARK
 
-U diffusion%b		diffusion.adb		7ba9ec81 NE OO SU IL
+U diffusion%b		diffusion.adb		21e02ce4 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.characters%s	a-charac.ads		a-charac.ali
 W ada.characters.latin_1%s  a-chlat1.ads	a-chlat1.ali
@@ -39,7 +39,7 @@ D a-textio.ads		20130106093217 386df5d4
 D a-tiflio.ads		20121213103024 56fbda09
 D a-tiinio.ads		20121213103024 aa04e5d6
 D a-unccon.ads		20121213103024 f9eb8f06
-D diffusion.adb		20221118184851 ed88936f
+D diffusion.adb		20221118203823 b7c1530a
 D interfac.ads		20121213103024 129923ea
 D i-cstrea.ads		20130106093208 3286f6aa
 D system.ads		20121213103024 90249111
@@ -79,45 +79,45 @@ X 10 a-lfteio.ads
 18K13*Long_Float_Text_IO[14|45] 17|1w44 2r43
 X 13 a-textio.ads
 49K13*Text_IO 471e16 17|1w10 2r9 3w10 4r9
-166U14*New_Line 17|23s13 96s17
-206U14*Get 17|27s13
-242U14*Put 17|21s10 26s13 94s17 99s13 100s13 101s13
+166U14*New_Line 17|21s13 97s17
+206U14*Get 17|25s13
+242U14*Put 17|19s10 24s13 95s17 100s13 101s13 102s13
 X 14 a-tiflio.ads
-67U14*Put 17|93s17[10|18] 95s17[10|18]
+67U14*Put 17|94s17[10|18] 96s17[10|18]
 X 15 a-tiinio.ads
-55U14*Get 17|22s13[8|18]
+55U14*Get 17|20s13[8|18]
 X 17 diffusion.adb
-6U11*diffusion 6b11 103l5 103t14
+6U11*diffusion 6b11 104l5 104t14
 7A10 Three_Dimensional_Float_Array(long_float)<integer><integer><integer>
-. 36r20
-8i5 dim{integer} 22m17 33r77 34r89 36r54 36r63 36r72 41r70 45r62 47r37 48r35
-. 57r34 58r38 59r42 60r46 61r46 62r50 83r30 84r34 85r38
-9e5 flag{character} 27m17 44r16
-10i5 tempa{integer} 45m15 49r26
-15f5 time{long_float} 80m17 80r25 95r21 100r34
-16f5 ratio{long_float} 56r23 92m17 93r21
-30f9 room_dimension{long_float} 33r49 34r35
-31f9 diffusion_coefficent{long_float} 35r31
-32f9 speed_of_gas_molecules{long_float} 34r52
-33f9 distance_between_blocks{long_float} 35r77 35r101
-34f9 timestep{long_float} 35r54 80r32
-35f9 DTerm{long_float} 69r85
-36a13 cube{7A10} 49m21 54m17 69r56 69r70 70m45 70r60 71m45 71r60 81r27 82r27
-. 86r54 87r54 88r48
-37f13 sumval{long_float} 88m29 88r39
-38f13 maxval{long_float} 81m17 86m29 86r67 92r33
-39f13 minval{long_float} 82m17 87m29 87r67 92r26
-40f13 change{long_float} 69m45 70r74 71r74
-41i13 tempb{integer} 47r30
-47i21 zerob{integer} 49r32
-48i23 zeroc{integer} 49r38
-57i25 i{integer} 63r45 64r42 65r42 66r42 67r42 68r42 69r61 70r50 70r65
-58i29 j{integer} 63r55 64r52 65r52 66r52 67r56 68r56 69r63 70r52 70r67
-59i33 k{integer} 63r65 64r62 65r66 66r66 67r66 68r66 69r65 70r54 70r69
-60i37 l{integer} 63r49 64r46 65r46 66r46 67r47 68r47 69r75 71r50 71r65
-61i37 m{integer} 63r59 64r56 65r57 66r57 67r60 68r60 69r77 71r52 71r67
-62i41 n{integer} 63r70 64r67 65r70 66r70 67r70 68r70 69r79 71r54 71r69
-83i21 i{integer} 86r59 87r59 88r53
-84i25 j{integer} 86r61 87r61 88r55
-85i29 k{integer} 86r63 87r63 88r57
+. 34r20
+8i5 dim{integer} 20m17 31r77 32r89 34r54 34r63 34r72 43r58 44r63 45r34 46r31
+. 55r33 56r37 57r41 58r45 59r45 60r49 82r30 83r34 84r38
+9e5 flag{character} 25m17 42r16
+13f5 time{long_float} 79m17 79r25 96r21 101r34
+14f5 ratio{long_float} 54r23 93m17 94r21
+28f9 room_dimension{long_float} 31r49 32r35
+29f9 diffusion_coefficent{long_float} 33r31
+30f9 speed_of_gas_molecules{long_float} 32r52
+31f9 distance_between_blocks{long_float} 33r77 33r101
+32f9 timestep{long_float} 33r54 79r32
+33f9 DTerm{long_float} 68r85
+34a13 cube{7A10} 47m21 52m17 67r42 67r68 68r56 68r70 69m45 69r60 70m45 70r60
+. 80r27 81r27 85r32 86r58 87r58 88r52
+35f13 sumval{long_float} 88m33 88r43
+36f13 maxval{long_float} 80m17 86m33 86r71 93r33
+37f13 minval{long_float} 81m17 87m33 87r71 93r26
+38f13 change{long_float} 68m45 69r74 70r74
+39i13 i{integer} 43m15 47r26
+40i13 height{integer} 44m15 45r26
+45i21 j{integer} 47r28
+46i23 k{integer} 47r30
+55i25 i{integer} 61r46 62r42 63r42 64r42 65r42 66r42 67r47 68r61 69r50 69r65
+56i29 j{integer} 61r56 62r52 63r52 64r52 65r56 66r56 67r50 68r63 69r52 69r67
+57i33 k{integer} 61r66 62r62 63r66 64r66 65r66 66r66 67r53 68r65 69r54 69r69
+58i37 l{integer} 61r50 62r46 63r46 64r46 65r47 66r47 67r73 68r75 70r50 70r65
+59i37 m{integer} 61r60 62r56 63r57 64r57 65r60 66r60 67r76 68r77 70r52 70r67
+60i41 n{integer} 61r71 62r67 63r70 64r70 65r70 66r70 67r79 68r79 70r54 70r69
+82i21 i{integer} 85r37 86r63 87r63 88r57
+83i25 j{integer} 85r40 86r65 87r65 88r59
+84i29 k{integer} 85r43 86r67 87r67 88r61
 

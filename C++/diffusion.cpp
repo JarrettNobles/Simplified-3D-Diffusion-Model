@@ -7,13 +7,16 @@
 using namespace std;
 //main method
 int main(){
+  int maxsize, tempa, tempb, zeroa, zeroc, zerob;
+  char flag;
+
+  cout << "Enter the room dimesion " << endl;
+  cin >> maxsize;
     //final variable for the cube
-    const int maxsize = 10;
     //declare the cube
-    double cube[maxsize][maxsize][maxsize];
-    
-    //zero the cube
-    for(int i =0; i<maxsize;i++)
+  double cube[maxsize][maxsize][maxsize];
+//zero the cube
+  for(int i =0; i<maxsize;i++)
     {
         for(int j=0;j<maxsize;j++)
         {
@@ -23,6 +26,21 @@ int main(){
             }
         }
     }
+  cout << "Do you want to add a partition(y/n)" << endl;
+  cin >> flag;
+  if(flag == 'y'){
+    tempa = ceil(maxsize * .5) - 1.0;
+    tempb = ceil(maxsize* .25) - 1.0;
+    for(int i = int(tempb); i < maxsize; i++){
+      for(int j =0; j < maxsize; j++){
+        cube[i][j][tempa] = -1.0;
+      }
+      
+    }
+      
+  }
+  
+  
 
     double diffusion_coefficient = 0.175;
     double room_dimension = 5;
@@ -54,10 +72,12 @@ int main(){
                                             ( ( i == l )   && ( j == m-1 ) && ( k == n)   ) ||  
                                             ( ( i == l+1 ) && ( j == m )   && ( k == n)   ) ||  
                                             ( ( i == l-1 ) && ( j == m )   && ( k == n)   ) ) {
-
+                                        if(cube[i][j][k] != -1 && cube[l][m][n] != -1){
                                         double change = (cube[i][j][k] - cube[l][m][n]) * DTerm;
-                                        cube[i][j][k] = cube[i][j][k] - change;                                
-                                        cube[l][m][n] = cube[l][m][n] + change;                                
+                                        cube[i][j][k] = cube[i][j][k] - change;                    
+                                        cube[l][m][n] = cube[l][m][n] + change;  
+                                          }
+                                        //cout << "here" << endl;
                                     }          
                                 }
                             }
@@ -65,17 +85,21 @@ int main(){
                     }
                 }
             }
-
+      
         time = time + timestep;
         double sumval = 0.0;
-        double maxval = cube[0][0][0]; 
+        double maxval = cube[0][0][0];
         double minval = cube[0][0][0];
+        cout << maxval << endl;
+        cout << minval << endl;
         for (int i=0; i<maxsize; i++) { 
             for (int j=0; j<maxsize; j++) { 
                 for (int k=0; k<maxsize; k++) { 
+                    if(cube[i][j][k] != -1){
                     maxval = std::max(cube[i][j][k],maxval);
                     minval = std::min(cube[i][j][k],minval);
                     sumval += cube[i][j][k];
+                    }
                 }
             }
         }
@@ -85,17 +109,9 @@ int main(){
         std::cout<< " " << cube[maxsize-1][0][0];
         std::cout<<" " << cube[maxsize-1][maxsize-1][0];
         std::cout<<" " << cube[maxsize-1][maxsize-1][maxsize-1];
-        std::cout<< " " << sumval << endl;
+        std::cout<< " " << ratio << endl;
 
     }while(ratio < 0.99);
 
     std::cout<<"Box equilibrated in " <<time << " seconds of simulated time." << endl;
-    
-
-
-
-
-
-
-
-}
+  }

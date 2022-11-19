@@ -3,7 +3,7 @@
 #partition function
 function userIn()
   print("Would you like to add a partition for the size of the room? (y/n): ")
-  input= readline()
+  input = readline()
   if (input == "y")
     return 1
   else
@@ -16,6 +16,8 @@ function main()
   print("What are the dimensions you would like the room to be: ")
   dim = readline()
   dim = parse(Int64, dim)
+  
+
 
   #declare the cube
   cube = zeros(dim,dim,dim)
@@ -24,14 +26,12 @@ function main()
   #call the userIn function
   part = userIn()
   if (part == 1)
-    i = floor(Int64, dim * .5) - 1
-    j = floor(Int64, dim * .25) - 1
-    k = 1
+    i = ceil( Int64, dim * 0.5)  
+    j = ceil(Int64, dim * 0.25) 
     #for loop
-    for j in dimension
-      for k in dimension
-        cube[i,j,k] = -1.0
-        #print("loop")
+    for x = j:dim
+      for k = 1:dim
+        cube[i,x,k] = -1.0
       end
     end
   end

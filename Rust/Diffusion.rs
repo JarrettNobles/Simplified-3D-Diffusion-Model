@@ -1,9 +1,10 @@
+use std::io;
 const MAXSIZE : usize = 10;
 
 fn main(){
-    //use std::cmp;
     // obtained from https://docs.rs/multiarray/latest/multiarray/ and https://programming-idioms.org/idiom/27/create-a-3-dimensional-array/452/rust
     // mut variables from https://doc.rust-lang.org/std/keyword.mut.html
+    
     let mut cube:[[[f64;MAXSIZE];MAXSIZE];MAXSIZE] = [[[0.0;MAXSIZE];MAXSIZE];MAXSIZE];
     let diffusion_coefficient: f64 = 0.175;
     let room_dimension: f64 = 5.0;

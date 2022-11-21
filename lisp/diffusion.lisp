@@ -1,13 +1,14 @@
 #!/usr/bin/sbcl --script
-;;maxsize variable
-;obtained from https://www.tutorialspoint.com/lisp/lisp_variables.htm
+; maxsize variable
+; obtained from https://www.tutorialspoint.com/lisp/lisp_variables.htm
+; BEGIN PROGRAM
 (defvar maxsize 10)
 
-;;declare the cube https://stackoverflow.com/questions/869529/difference-between-set-setq-and-setf-in-common-lisp
+; declare the cube https://stackoverflow.com/questions/869529/difference-between-set-setq-and-setf-in-common-lisp
 (defvar cube)
 (setf cube(make-array(list maxsize maxsize maxsize)))
 
-;;zero cube --
+; zero cube --
 ; http://clhs.lisp.se/Body/f_aref.htm
 (loop for i from 0 to(- maxsize 1) do
     (loop for j from 0 to (- maxsize 1) do
@@ -28,7 +29,7 @@
 ; set cube initial value
 (setf(aref cube 0 0 0) 1.0e21)
 
-;start loop here
+; start loop here
 (loop while(<ratio 0.99) do
     (loop i from 0 to ( - maxsize 1) do
         (loop for j from 0 to (- maxsize 1) do
@@ -48,7 +49,7 @@
                                     (incf (aref cube l m n)  change)))))))))
 
     ; http://clhs.lisp.se/Body/m_incf_.htm incf obtained here
-    ;time functions
+    ; time functions
     (incf ratio timestep)
     (defvar minval(aref cube 0 0 0))
     (defvar maxval(aref cube 0 0 0))

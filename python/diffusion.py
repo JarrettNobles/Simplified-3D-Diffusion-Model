@@ -14,14 +14,8 @@ if partition == 1:
     for i in range (maxsize-1):
         for j in range (maxsize-1):
             cube[int(i)][int(j)][int(tempa)] = -1.00
-
-
-
-#if partition != 1 and partition != 0:
- #   print ("Partition set at 0")
  
-
-
+#variable functions
 partsize = math.floor(maxsize / 2)
 cube = [[[0.0] * maxsize] * maxsize] * maxsize
 cube[0][0][0] = 1.0e21

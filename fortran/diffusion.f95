@@ -34,7 +34,7 @@ END IF
 
 
 
-
+!time functions
 time = 0.0
 ratio = 0.0
 diffusion_coefficient = 0.175

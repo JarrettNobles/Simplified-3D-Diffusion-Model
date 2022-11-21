@@ -10,6 +10,7 @@ int main(){
   int maxsize, tempa, tempb, zeroa, zeroc, zerob;
   char flag;
 
+  //partition and room size
   cout << "Enter the room dimesion " << endl;
   cin >> maxsize;
     //final variable for the cube
@@ -41,7 +42,7 @@ int main(){
   }
   
   
-
+    //variable declaration
     double diffusion_coefficient = 0.175;
     double room_dimension = 5;
     double speed_of_gas_molecules = 250.0;
@@ -57,7 +58,7 @@ int main(){
     double time = 0.0;
     double ratio = 0.0;
 
-    
+    //giant loop begin here
     do {
             for (int i=0; i<maxsize; i++) { 
                 for (int j=0; j<maxsize; j++) { 
@@ -85,7 +86,7 @@ int main(){
                     }
                 }
             }
-      
+        //time functions
         time = time + timestep;
         double sumval = 0.0;
         double maxval = cube[0][0][0];
@@ -104,7 +105,7 @@ int main(){
             }
         }
         ratio = minval/maxval;
-        
+        //print the cube
         std::cout<<time << " " <<cube[0][0][0];
         std::cout<< " " << cube[maxsize-1][0][0];
         std::cout<<" " << cube[maxsize-1][maxsize-1][0];

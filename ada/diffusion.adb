@@ -23,7 +23,7 @@ procedure diffusion is
             --ask user for partition
             put("Do you want to add a partition (y/n): ");
             get(flag);
-    
+    --begin the giant loop and declaring variables here
         declare
         room_dimension : Long_Float := 5.0;
         diffusion_coefficent : Long_Float := 0.175;
@@ -76,6 +76,7 @@ procedure diffusion is
                         end loop;
                     end loop;
                 --end of giant loop here
+                --time functions begin here
                 time := time + timestep;
                 maxval := cube(1,1,1);
                 minval := cube(1,1,1);

@@ -1,6 +1,6 @@
 #!/usr2/local/julia-1.8.2/bin/julia
 
-#partition function
+#partition function is seperate
 function userIn()
   print("Would you like to add a partition for the size of the room? (y/n): ")
   input = readline()

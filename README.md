@@ -8,7 +8,7 @@ This project simulates how long it would take for a gas mixture to fill a room. 
 RUN INSTRUCTIONS
 
 C++:
-  TO COMPILE: c++ diffusion.cpp
+  TO COMPILE: g++ diffusion.cpp
   TO RUN: ./a.out
   
 RUST:
